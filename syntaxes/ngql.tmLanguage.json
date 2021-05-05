@@ -1,0 +1,250 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "nGQL",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#functions"
+		},
+		{
+			"include": "#punctuations"
+		},
+		{
+			"include": "#operators"
+		},
+		{
+			"include": "#constants"
+		},
+		{
+			"name": "keyword.control.main.ngql",
+			"match": "(?i)\\b(GO|FIND|LOOKUP|FETCH|MATCH|SHOW|UNWIND)\\b"
+		},
+		{
+			"name": "keyword.control.general.ngql",
+			"match": "(?i)\\b(AS|TO|USE|SET|FROM|WHERE|INSERT|YIELD|RETURN|DESCRIBE|DESC|VERTEX|EDGE|EDGES|UPDATE|UPSERT|WHEN|DELETE|ALTER|STEPS|STEP|OVER|UPTO|REVERSELY)\\b"
+		},
+		{
+			"name": "keyword.control.index.ngql",
+			"match": "(?i)\\b(INDEX|INDEXES|REBUILD)\\b"
+		},
+		{
+			"name": "entity.name.type.ngql",
+			"match": "(?i)\\b(BOOL|INT8|INT16|INT32|INT64|INT|FLOAT|DOUBLE|STRING|FIXED|TIMESTAMP|DATE|TIME|DATETIME)\\b"
+		},
+		{
+			"name": "keyword.control.other.ngql",
+			"match": "(?i)\\b(TAG|TAGS|UNION|INTERSECT|MINUS|NO|OVERWRITE|ADD|CREATE|DROP|REMOVE|NOT|EXISTS|WITH|CHANGE|GRANT|REVOKE|ON|BY|IN|DOWNLOAD|GET|OF|ORDER|INGEST|COMPACT|FLUSH|SUBMIT|ASC|ASCENDING|DESCENDING|DISTINCT|PROP|BALANCE|STOP|LIMIT|OFFSET|IS|RECOVER|FORMAT|CASE)\\b"
+		},
+		{
+			"name": "keyword.other.profile.ngql",
+			"match": "(?i)\\b(EXPLAIN|PROFILE)\\b"
+		},
+		{
+			"name": "keyword.control.case.ngql",
+			"match": "(?i)\\b(IF|THEN|ELSE|END)\\b"
+		},
+		{
+			"name": "keyword.other.internal-reference.ngql",
+			"match": "(?i)\\b(_id|_type|_src|_dst|_rank)\\b"
+		},
+		{
+			"name": "keyword.other.unreserved.ngql",
+			"match": "(?i)\\b(HOST|HOSTS|SPACE|SPACES|VALUE|VALUES|USER|USERS|PASSWORD|ROLE|ROLES|GOD|ADMIN|DBA|GUEST|GROUP|PARTITION|NUM|REPLICA|FACTOR|VID|TYPE|CHARSET|COLLATE|COLLATION|ATOMIC|ALL|ANY|SINGLE|NONE|REDUCE|LEADER|UUID|DATA|SNAPSHOT|SNAPSHOTS|ACCOUNT|JOBS|JOB|PATH|BIDIRECT|STATS|STATUS|FORCE|PART|PARTS|DEFAULT|HDFS|CONFIGS|TTL|DURATION|COL|GRAPH|META|STORAGE|SHORTEST|NOLOOP|OUT|BOTH|SUBGRAPH|CONTAINS|STARTS|ENDS|EMPTY|SKIP|OPTIONAL|GROUPS|ZONE|ZONES|INTO|LISTENER|ELASTICSEARCH|AUTO|FUZZY|PREFIX|REGEXP|WILDCARD|TEXT|SEARCH|CLIENTS|SIGN|SERVICE|RESET|PLAN)\\b"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.double-slash.ngql",
+				"match": "\/\/.*$\\n?"
+			},
+			{
+				"name": "comment.line.sharp.ngql",
+				"match": "\\#.*$\\n?"
+			},
+			{
+				"begin": "/\\*",
+				"captures": {
+					"0": {
+					"name": "punctuation.definition.comment.ngql"
+					}
+				},
+				"end": "\\*/",
+				"name": "comment.block.c"
+			}
+		]
+		},
+		"operators": {
+			"patterns": [
+			{
+				"name": "keyword.operator.logical.ngql",
+				"match": "(?i)\\b(OR|AND|XOR|IS)\\b"
+			},
+			{
+				"name": "keyword.operator.comparison.ngql",
+				"match": "(<=|=>|<>|<|>|=~|==|!=)"
+			},
+			{
+				"name": "keyword.operator.math.ngql",
+				"match": "(\\+|\\-|\\\/|\\*|\\%|\\?|!)"
+			}]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.ngql",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.ngql",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "string.quoted.single.ngql",
+					"begin": "\\'",
+					"end": "\\'",
+					"patterns": [
+						{
+							"name": "constant.character.escape.ngql",
+							"match": "\\\\."
+						}
+					]
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"match": "(?i)\\bTRUE|FALSE\\b",
+					"name": "constant.language.bool.ngql"
+				},
+				{
+					"match": "(?i)\\bNULL\\b",
+					"name": "constant.language.null.ngql"
+				}
+			]
+		},
+		"functions": {
+			"patterns": [
+				{
+					"match": "(?i)\\b(abs|floor|ceil|round|sqrt|cbrt|hypot|pow|exp|exp2|log|log2|log10|sin|asin|cos|acos|tan|atan|rand|rand32|rand64|collect|avg|count|max|min|std|sum|bit_and|bit_or|bit_xor|size|range|sign|e|pi|radians)\\b",
+					"name": "support.function.math.ngql"
+				},
+				{
+					"match": "(?i)\\b(strcasecmp|lower|toLower|upper|toUpper|length|trim|ltrim|rtrim|left|right|lpad|rpad|substr|substring|reverse|replace|split|toString|hash)\\b",
+					"name": "support.function.string.ngql"
+				},
+				{
+					"match": "(?i)\\b(now|date|time|datetime)\\b",
+					"name": "support.function.datetime.ngql"
+				},
+				{
+					"match": "(?i)\\b(id|tags|labels|properties|type|startNode|endNode|rank)\\b",
+					"name": "support.function.schema.ngql"
+				},
+				{
+					"match": "(?i)\\b(keys|labels|nodes|range|relationships|reverse|tail|head|last|coalesce|reduc)\\b",
+					"name": "support.function.list.ngql"
+				}
+			]
+		},
+		"punctuations": {
+			"patterns": [
+				{
+					"match": "=",
+					"name": "punctuation.assign.ngql"
+				},
+				{
+					"match": "(\\$\\$|\\$\\^|\\$-)",
+					"name": "punctuation.reference.ngql"
+				},
+				{
+					"match": "(->|<-)",
+					"name": "punctuation.aarow.ngql"
+				},
+				{
+					"match": "\\|",
+					"name": "punctuation.separator.pipe.ngql"
+				},
+				{
+					"match": ",",
+					"name": "punctuation.separator.comma.ngql"
+				},
+				{
+					"match": "\\.",
+					"name": "punctuation.separator.period.ngql"
+				},
+				{
+					"match": ";",
+					"name": "punctuation.terminator.statement.semicolon.ngql"
+				},
+				{
+					"begin": "\\(",
+					"end": "\\)",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.section.paren.begin.ngql"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.section.paren.end.ngql"
+						}
+					},
+					"patterns": [
+						{
+							"include": "$self"
+						}
+					]
+				},
+				{
+					"begin": "\\[",
+					"end": "\\]",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.section.bracket.begin.ngql"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.section.bracket.end.ngql"
+						}
+					},
+					"patterns": [
+						{
+							"include": "$self"
+						}
+					]
+				},
+				{
+					"begin": "\\{",
+					"end": "\\}",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.section.brace.begin.ngql"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.section.brace.end.ngql"
+						}
+					},
+					"patterns": [
+						{
+							"include": "$self"
+						}
+					]
+				}
+			]
+		}
+	},
+	"scopeName": "source.ngql"
+}
