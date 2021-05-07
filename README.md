@@ -12,7 +12,9 @@
 
 Initial release, only `.ngql` Syntax is supported.
 
+### 0.0.2
 
+Lower supported vscode version till `^1.50.1`
 
 ## Reference
 
