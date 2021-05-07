@@ -8,9 +8,9 @@
     },
     "icon": "static/logo.png",
     "description": "nGQL extension VSCode is built to integrate the Nebula Graph with VSCode for an awesome developer experience.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "engines": {
-        "vscode": "^1.55.0"
+        "vscode": "^1.50.0"
     },
     "categories": [
         "Programming Languages"
