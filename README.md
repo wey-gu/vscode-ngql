@@ -1,4 +1,4 @@
-# VS Code nGQL Syntax Highlight
+# VS Code nGQL(NebulaGraph Query Language) Syntax Highlight
 
 ![vscode-ngql-demo](https://github.com/wey-gu/vscode-ngql/raw/main/static/vscode-ngql-demo.gif)
 
@@ -16,8 +16,11 @@ Initial release, only `.ngql` Syntax is supported.
 
 Lower supported vscode version till `^1.50.1`
 
+### 0.0.3
+
+Add support of `.🌌` file
+
 ## Reference
 
-- https://docs.nebula-graph.com.cn/2.0/3.ngql-guide
-- https://github.com/vesoft-inc/nebula-graph/blob/master/src/parser/scanner.lex
-
+- https://docs.nebula-graph.io/
+- https://github.com/vesoft-inc/nebula/blob/master/src/parser/scanner.lex
