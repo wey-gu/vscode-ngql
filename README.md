@@ -2,6 +2,10 @@
 
 ![vscode-ngql-demo](https://github.com/wey-gu/vscode-ngql/raw/main/static/vscode-ngql-demo.gif)
 
+## Installation
+
+Search for `ngql` or visit [here](https://marketplace.visualstudio.com/items?itemName=Wey-Gu.vscode-ngql) in the vscode extension marketplace.
+
 ## Features
 
 - Highlighting all Keywords, Functions of a given `.ngql` file
